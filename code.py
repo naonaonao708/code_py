@@ -36,3 +36,26 @@ for i in range(1,10):
 # スペースのある入力値をint形式でinputする
 H,W,K = map(int, input().split())
 dt = [input() for i in range(H)]
+
+
+# if内の条件の複数指定
+N, X, Y = map(int, input().split())
+for i in range(1,N+1):
+    if i%X==0 and i%Y==0:
+        print("AB")
+    elif i%X==0:
+        print("A")
+    elif i%Y==0:
+        print("B")
+    else:
+        print("N")
+
+
+# 特定の文字列をカウントする
+input_line = input().split('+')
+dt = 0
+for i in range(len(input_line)):
+    dt += input_line[i].count('<')*10 + input_line[i].count('/')
+    
+print(dt)
+
