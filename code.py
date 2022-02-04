@@ -9,3 +9,25 @@ for i in range(pass_num):
     sublist = list(map(int, input().split()))
     boll_pass.append(sublist)
 
+
+# ネストしたforループからbreak
+a,b = input().split()
+a_num = int(a) * 100
+b_num = int(b)
+
+for i in range(1,10):
+    a_number = i *10
+    for j in range(1,10):
+        i_number = j
+        dt_1 = (a_number + i_number) * i_number
+        dt_2 = a_num + b_num + a_number
+        if dt_1 == dt_2:
+            print(i,j)
+            break
+        elif i == 9 & j == 9:
+            print("No")
+        else:
+            pass
+    else:
+        continue
+    break
