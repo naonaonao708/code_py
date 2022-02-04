@@ -31,3 +31,8 @@ for i in range(1,10):
     else:
         continue
     break
+
+
+# スペースのある入力値をint形式でinputする
+H,W,K = map(int, input().split())
+dt = [input() for i in range(H)]
