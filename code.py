@@ -1,3 +1,5 @@
+# PAIZAのC級問題のソースコード
+
 people_num = int(input())
 # For文によって指定した回数inputする
 boll_num = [int(input()) for i in range(people_num)]
@@ -59,3 +61,39 @@ for i in range(len(input_line)):
     
 print(dt)
 
+
+# 絶対値の求め方、変数をforごとに変える
+N = int(input())
+floor = [int(input()) for i in range(N)]
+
+now_floor = 1
+floor_num = 0
+for i in range(N):
+    floor_num += abs(now_floor - floor[i])
+    now_floor = floor[i]
+
+print(floor_num)
+
+
+# if文で値を交互に出す
+M = int(input())
+a_days = [int(input()) for i in range(M)]
+N = int(input())
+b_days = [int(input()) for i in range(N)]
+a_b_days = list(set(a_days) & set(b_days))
+
+num = 0
+for i in range(1,32):
+    if i in a_b_days:
+        if num % 2 == 0:
+            print("A")
+        else:
+            print("B")
+        num += 1
+    elif i in a_days:
+        print("A")
+    elif i in b_days:
+        print("B")
+    else:
+        print("x")
+        
