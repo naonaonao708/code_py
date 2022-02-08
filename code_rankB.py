@@ -62,3 +62,72 @@ for i in range(N):
                 blue += 1
     if i == N-1:
         print("no")
+
+
+# カラオケ大会 最後に一つエラー吐いた
+# 解決→ifの最初のイージーミス
+
+N, M = map(int,input().split())
+sample_data = [int(input()) for j in range(M)]
+test_data = []
+for i in range(N):
+    sublist = []
+    sublist = [int(input()) for j in range(M)]
+    test_data.append(sublist)
+ 
+def scoring(x):
+    x = abs(x)
+    if x < 5:
+        return 0
+    elif x <= 10:
+        return 1
+    elif 10 < x <= 20:
+        return 2
+    elif 20 < x <= 30:
+        return 3
+    else:
+        return 5
+
+score_list = []
+for i in range(N):
+    score = 100
+    count = 0
+    for j in range(M):
+        if count < M-1:
+            dt = sample_data[j] - test_data[i][j]
+            score -= scoring(dt)
+            count += 1
+        else:
+            dt = sample_data[j] - test_data[i][j]
+            score -= scoring(dt)
+            if score > 0:
+                score_list.append(score)
+            elif score < 0:
+                score = 0
+                score_list.append(score)
+            
+print(max(score_list))
+
+
+# チョコの分割
+
+H, W = map(int,input().split())
+
+return_list = []
+for i in range(H):
+    raw_data = input().split()
+    # リストの型をint型へ変換　内包表記で行う
+    raw_data = [int(i) for i in raw_data]
+    for j in range(W):
+        # リスト内で和が等しくなる場合の抽出
+        if sum(raw_data[0:j+1]) == sum(raw_data[j+1:W]):
+            return_list.append("A"*(j+1) + "B"*(W-j-1))
+        else:
+            pass
+
+if len(return_list) == H:
+    print("Yes")
+    for i in range(H):
+        print(return_list[i])
+else:
+    print("No")
