@@ -96,4 +96,21 @@ for i in range(1,32):
         print("B")
     else:
         print("x")
-        
+
+
+# 暴風域を求める問題　
+
+xc,yc,r_1,r_2 = map(int,input().split())
+
+# 関数を使うことでよりコンパクトで見やすくなった
+def storm_area(x,y):
+    # 二乗は**2で求める
+    if r_1**2 <= (x - xc)**2 + (y - yc)**2 and (x - xc)**2 + (y - yc)**2 <= r_2**2:
+        return "yes"
+    else:
+        return "no"
+
+num = int(input())
+for i in range(num):
+    x,y = map(int,input().split())
+    print(storm_area(x,y))
