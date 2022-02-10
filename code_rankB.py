@@ -131,3 +131,36 @@ if len(return_list) == H:
         print(return_list[i])
 else:
     print("No")
+
+
+
+# 台風の接近
+
+import collections
+
+N,M = map(int,input().split())
+rain_data = []
+for i in range(N):
+    raw_data = input().split()
+    raw_data = [int(i) for i in raw_data]
+    rain_data.append(raw_data)
+
+root = []
+for i in range(N):
+    for j in range(N):
+        if rain_data[i][j] < M:
+            root.append(j+1)
+        else:
+            pass
+
+
+# collections.Counterによってリスト内の要素の個数を辞書型化
+c = collections.Counter(root)
+# 辞書型をリスト内包表記とitemsメソッドによって指定した値と等しいキーを出力
+keys = [k for k, v in c.items() if v == N]
+
+if len(keys) > 0:
+    # リストの要素をスペース区切りで出力する
+    print(*keys)
+else:
+    print("wait")
