@@ -109,7 +109,6 @@ for i in range(N):
 print(max(score_list))
 
 
-# チョコの分割
 
 H, W = map(int,input().split())
 
@@ -134,7 +133,6 @@ else:
 
 
 
-# 台風の接近
 
 import collections
 
@@ -164,3 +162,25 @@ if len(keys) > 0:
     print(*keys)
 else:
     print("wait")
+
+
+
+from statistics import mean
+import math
+
+N,M = map(int,input().split())
+light_num = input().split()
+light_num = [int(i) for i in light_num]
+
+Q = int(input())
+
+for i in range(Q):
+    a, b = map(int,input().split())
+    if mean(light_num[a-1:b]) < M:
+        dt = M - math.floor(mean(light_num[a-1:b]))
+        # リスト内包表記によって要素ごとに加算を行う
+        # リストの加算を後にも反映させるために＝で結ぶ
+        light_num[a-1:b] = [n + dt for n in light_num[a-1:b]]
+
+# リストをスペース区切りで出力       
+print(*light_num)
